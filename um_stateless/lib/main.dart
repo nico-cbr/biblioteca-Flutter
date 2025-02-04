@@ -22,7 +22,7 @@ class Aplicativo extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.ac_unit_rounded, color:  Colors.blueGrey[800]),
+          // leading: Icon(Icons.ac_unit_rounded, color:  Colors.blueGrey[800]),
           title: Text('Flutter é divertido!.', style: TextStyle(color: Colors.blueGrey[800]), ),
           backgroundColor: Colors.amber[50],
         ),
@@ -75,6 +75,33 @@ class Aplicativo extends StatelessWidget{
           BottomNavigationBarItem(icon: Icon(Icons.school), label:"Escola"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label:"Buscar"),
         ]),
+
+        drawer: Drawer(
+          backgroundColor: Color.fromARGB(255, 30, 36, 39),
+          child: ListView(
+            padding: EdgeInsets.zero, //zerar padding
+            children: [
+              DrawerHeader(
+                child: Text('Texto de Cabeçalho')
+                ),
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text("Perfil"),
+                onTap: () {print("entrou no perfil");},
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text("Página Inicial"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Configurações"),
+                onTap: () {},
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
