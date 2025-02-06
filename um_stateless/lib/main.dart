@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:um_stateless/paginainicial.dart';
 
 // função principal que inicia o app
 void main(){
-  runApp(Aplicativo());
+  runApp(home());
+}
+
+class home extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
+      home: Aplicativo(),
+    );
+  }
 }
 // criando minha classe própria
 class Aplicativo extends StatelessWidget{
@@ -17,10 +29,7 @@ class Aplicativo extends StatelessWidget{
   // MaterialApp é o que personaliza o tema
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           // leading: Icon(Icons.ac_unit_rounded, color:  Colors.blueGrey[800]),
           title: Text('Flutter é divertido!.', style: TextStyle(color: Colors.blueGrey[800]), ),
@@ -92,7 +101,10 @@ class Aplicativo extends StatelessWidget{
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text("Página Inicial"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaginaInicial()));
+                },
               ),
               ListTile(
                 leading: Icon(Icons.settings),
@@ -102,7 +114,6 @@ class Aplicativo extends StatelessWidget{
             ],
           ),
         ),
-      ),
     );
   }
 }

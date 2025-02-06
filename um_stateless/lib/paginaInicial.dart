@@ -27,8 +27,19 @@ class PaginaInicial extends StatelessWidget{
            Image.network('https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png', width: 300, height: 300,),
 
            SizedBox(height: 20,),
+          Text("O que é Flutter?"),
 
-           Text("Conteúdo da página inicial")
+          Text('''Flutter é um framework do Google para criar aplicativos multiplataformas.
+          Serve para ndroid, IOS, Web e desktop com suporte para outros, usando a linguagem DART
+          Possui Widgets, que são blocos de construção da interface no flutter, toda tela é 
+          um widget, desde botões e textos até layouts mais complexos. Eles podem ser:
+          ''', textAlign: TextAlign.center,),
+
+          ListTile(leading: Icon(Icons.arrow_circle_right),
+          title: Text("Statefull: com estado dinâmico, a tela muda!")),
+
+          ListTile(leading: Icon(Icons.arrow_circle_right),
+          title: Text("Stateless: Imutável, a tela sempre é a mesma!")),
          ],
         ),
       ),
