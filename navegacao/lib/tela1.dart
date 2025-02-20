@@ -61,15 +61,19 @@ return Scaffold(
         );
         // adicionando pessoa "ex:Seu arlindo"
         widget.pessoas.add(pessoaNova);
+        print(widget.pessoas.length);
         // Limpar campos
           nomeControle.clear();
           emailControle.clear();
           telefoneControle.clear();
           enderecoControle.clear();
           cidadeControle.clear();
-      });}, 
-      child: Text("salvar"), style: ElevatedButton.styleFrom(foregroundColor: Colors.amber.shade50, backgroundColor: Colors.indigo.shade900,  )
+        
+      });}, style: ElevatedButton.styleFrom(foregroundColor: Colors.amber.shade50, backgroundColor: Colors.indigo.shade900,  ), 
+      child: Text("salvar")
       ),
+
+      ListTile(),
     ],
   ),),
 );

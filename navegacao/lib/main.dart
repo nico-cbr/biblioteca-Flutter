@@ -19,7 +19,7 @@ class Aplicativo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
        '/tela1': (context) => Cadastro(pessoas:pessoas),
-        '/tela2': (context) => Tela2(),
+        '/tela2': (context) => Tabela(pessoas:pessoas),
         '/tela3': (context) => Tela3(),
         '/tela4': (context) => Tela4(),
       },
@@ -42,8 +42,8 @@ class Menu extends StatelessWidget{
       child: GridView.count(
         crossAxisCount: 2,
         children: [
-          Botao(texto: 'Cadastrar', rota:'/tela1', icone: Icons.ac_unit, cor:  Colors.amber.shade50),
-          Botao(texto: 'Listar', rota:'/tela2', icone: Icons.ac_unit, cor: Colors.amber.shade50),
+          Botao(texto: 'Cadastrar', rota:'/tela1', icone: Icons.person_add_alt_1_sharp, cor:  Colors.amber.shade50),
+          Botao(texto: 'Listar', rota:'/tela2', icone: Icons.list_alt_rounded, cor: Colors.amber.shade50),
           Botao(texto: 'Sobre', rota:'/tela3', icone: Icons.ac_unit, cor: Colors.amber.shade50),
           Botao(texto: 'Contato', rota:'/tela4', icone: Icons.ac_unit, cor: Colors.amber.shade50),
         ],
