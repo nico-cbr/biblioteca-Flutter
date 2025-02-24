@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -31,9 +33,15 @@ class Cadastro extends StatefulWidget{
   final cidadeControle = TextEditingController();
 
   // criando metodo de cadastro
-  Future<void> cadastrarPessoa() async {
-    final url = Uri.parse("Link do banco");
-    final resposta = await http.post(url, body:"");
+  Future<void> cadastrarPessoa(Pessoa pessoa) async {
+    final url = Uri.parse("https://adota0-001-default-rtdb.firebaseio.com/pessoa.json");
+    final resposta = await http.post(url, body: jsonEncode({
+      "nome": pessoa.nome,
+      "email": pessoa.email,
+      "telefone": pessoa.telefone,
+      "endereco": pessoa.endereco,
+      "cidade": pessoa.cidade,
+      }));
   }
 
   @override
@@ -66,9 +74,10 @@ return Scaffold(
           enderecoControle.text,
           cidadeControle.text,
         );
+        // cadastrarPessoa();
         // adicionando pessoa "ex:Seu arlindo"
         widget.pessoas.add(pessoaNova);
-        print(widget.pessoas.length);
+        cadastrarPessoa(pessoaNova);
         // Limpar campos
           nomeControle.clear();
           emailControle.clear();
