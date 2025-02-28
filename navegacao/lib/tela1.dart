@@ -5,13 +5,14 @@ import 'package:http/http.dart' as http;
 
 // Criando a classe pessoa que vai fabricar pessoas
 class Pessoa {
+  String id;
   String nome;
   String email;
   String telefone;
   String endereco;
   String cidade;
 
-  Pessoa(this.nome, this.email, this.telefone, this.endereco, this.cidade);
+  Pessoa(this.id, this.nome, this.email, this.telefone, this.endereco, this.cidade);
 }
 
 class Cadastro extends StatefulWidget{
@@ -68,6 +69,7 @@ return Scaffold(
       {setState(() {
         // criação de um novo objeto pessoa "Ex: seu airlindo"
         Pessoa pessoaNova = Pessoa(
+          "",
           nomeControle.text,
           emailControle.text,
           telefoneControle.text,
