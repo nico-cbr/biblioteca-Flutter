@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:navegacao/tela1.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Detalhes extends StatelessWidget{
   final Pessoa pessoa;
 
   // passando parâmetro da pessoa especifica
   Detalhes({required this.pessoa});
+
+  ligar(String telefone) async{
+    final Uri telefoneUrl = Uri(scheme: "tel", path: telefone);
+    if(await canLaunchUrl(telefoneUrl)){
+      await launchUrl(telefoneUrl);
+    }
+  }
+
+mandarE(String email) async{
+    final Uri emailUrl = Uri(scheme: "mailto", path: email);
+    if(await canLaunchUrl(emailUrl)){
+      await launchUrl(emailUrl);
+    }
+  }
+
+mandarW(String telefone) async{
+    final Uri whatsUrl = Uri.parse("https://wa.me/$telefone");
+    if(await canLaunchUrl(whatsUrl)){
+      await launchUrl(whatsUrl);
+    }
+  }
 
 
   @override
@@ -31,7 +53,18 @@ class Detalhes extends StatelessWidget{
               Text("Telefone: ${pessoa.telefone}", style: TextStyle(fontSize: 18)),
               Text("Endereço: ${pessoa.endereco}", style: TextStyle(fontSize: 18)),
               Text("Cidade: ${pessoa.cidade}", style: TextStyle(fontSize: 18)),
-
+              SizedBox(height: 30,),
+              Row( 
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(onPressed: () => ligar(pessoa.telefone), icon: Icon(Icons.phone), label: Text("Ligar"), style: ElevatedButton.styleFrom(foregroundColor: Colors.amber.shade50, backgroundColor: Colors.indigo.shade900,  ), ),
+                  SizedBox(width: 10,),
+                  ElevatedButton.icon(onPressed: () => mandarE(pessoa.email), icon: Icon(Icons.email), label: Text("E-mail"), style: ElevatedButton.styleFrom(foregroundColor: Colors.amber.shade50, backgroundColor: Colors.indigo.shade900,  ),),
+                  SizedBox(width: 10,),
+                  ElevatedButton.icon(onPressed: () => mandarW(pessoa.telefone), icon: Icon(Icons.phone_iphone), label: Text("Whatsapp"), style: ElevatedButton.styleFrom(foregroundColor: Colors.amber.shade50, backgroundColor: Colors.indigo.shade900,  ),),
+                  SizedBox(width: 10,)
+                ],
+              )
             ],
           ),
         ),
