@@ -176,7 +176,7 @@ class verPostagens extends StatelessWidget{
                         Text(post['titulo']),
                         SizedBox(height: 8,),
                         Text(post['conteudo']),
-                        Text(post['autor'])
+                        Text("Autor: ${post['autor']}")
                       ],
                     ),
                     )

@@ -18,7 +18,6 @@ class Aplicativo extends StatelessWidget {
   Widget build(BuildContext context){
     return MaterialApp(
       title: 'Menu Principal',
-      theme: ThemeData.light(),
       home: Menu(),
       debugShowCheckedModeBanner: false,
       routes: {
@@ -80,7 +79,7 @@ class Botao extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icone, color: cor, size: 70),
+            Icon(icone, color: cor, size: 30),
             Text(texto, style: TextStyle(color: cor, fontSize: 20.0),)
           ],
         ),
