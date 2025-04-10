@@ -18,6 +18,9 @@ class Aplicativo extends StatelessWidget {
   Widget build(BuildContext context){
     return MaterialApp(
       title: 'Menu Principal',
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white
+      ),
       home: Menu(),
       debugShowCheckedModeBanner: false,
       routes: {
@@ -41,17 +44,19 @@ class Menu extends StatelessWidget{
         backgroundColor: Colors.indigo[900],
 
       ),
-    body: Center(
-      child: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          Botao(texto: 'Cadastrar', rota:'/tela1', icone: Icons.person_add_alt_1_sharp, cor:  Colors.amber.shade50),
-          Botao(texto: 'Listar', rota:'/tela2', icone: Icons.list_alt_rounded, cor: Colors.amber.shade50),
-          Botao(texto: 'Criar postagem', rota:'/tela3', icone: Icons.add, cor: Colors.amber.shade50),
-          Botao(texto: 'Notícias', rota:'/tela4', icone: Icons.newspaper_outlined, cor: Colors.amber.shade50),
-        ],
+    body: Padding(padding: EdgeInsets.symmetric(horizontal: 0, vertical: 15),
+    child: ListView(
+      children: [
+      Padding(padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
+        child: verPosicao(),
       ),
+        SizedBox(
+          height: 500,
+        child: verPostagens()
+        )
+    ]
     ),
+      ),
     );
   }
 }

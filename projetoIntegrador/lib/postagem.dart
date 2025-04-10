@@ -143,8 +143,8 @@ class verPostagens extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(title: Text("Notícias"),
-      backgroundColor: Colors.indigo.shade900,
-      foregroundColor: Colors.amber.shade50,
+foregroundColor: Colors.black,
+backgroundColor: Colors.white,
       ),
       body: FutureBuilder<List<Map<String,dynamic>>>(
         future: buscarPostagem(),
@@ -164,6 +164,7 @@ class verPostagens extends StatelessWidget{
             itemBuilder: (context, index){
               final post = posts[index];
               return Card(
+                color: Colors.white,
                 elevation: 5,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Column(
