@@ -1,0 +1,2 @@
+C:/Users/nicoly.9814/Desktop/luiz senac/biblioteca-Flutter/projetoIntegrador/android/app/.cxx/Debug/2g631s6d/x86/CMakeFiles/edit_cache.dir
+C:/Users/nicoly.9814/Desktop/luiz senac/biblioteca-Flutter/projetoIntegrador/android/app/.cxx/Debug/2g631s6d/x86/CMakeFiles/rebuild_cache.dir

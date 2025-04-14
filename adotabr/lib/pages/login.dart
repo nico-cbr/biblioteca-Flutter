@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:adotabr/pages/iniciopg.dart';
+import 'package:adotabr/wid/navBar.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,8 @@ import 'package:flutter/material.dart';
 // }
 
 class Login extends StatefulWidget {
+  const Login({super.key});
+
   @override
   LoginEstado createState() => LoginEstado();
 }
@@ -48,7 +51,7 @@ class LoginEstado extends State<Login> {
               height: 20,
             ),
             ElevatedButton(onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => inicioPg(nomeUsuario: 'Usuário')),);},
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => navBar()),);},
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue.shade800, // Cor de fundo
                 foregroundColor: Colors.amber.shade50,  // Cor do texto
@@ -78,6 +81,8 @@ class LoginEstado extends State<Login> {
 }
 
 class Cadastro extends StatefulWidget {
+  const Cadastro({super.key});
+
   @override
   CadastroEstado createState() => CadastroEstado();
 }
@@ -106,6 +111,7 @@ class CadastroEstado extends State<Cadastro> {
       headers: {'Content-Type': 'aplication/json'},
     );
     if (resposta.statusCode == 200) {
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } else {
       erro = "Erro ao cadastrar usuário";

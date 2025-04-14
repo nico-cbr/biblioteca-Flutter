@@ -1,4 +1,3 @@
-import 'package:adotabr/pages/iniciopg.dart';
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 
@@ -7,15 +6,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: inicioPg(nomeUsuario: '',),
+      home: Login(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade100,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey.shade100,
+          foregroundColor: Colors.indigo.shade900
+        )
       ),
     );
   }

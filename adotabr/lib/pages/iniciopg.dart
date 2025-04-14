@@ -1,33 +1,30 @@
+// ignore_for_file: camel_case_types
+import 'package:flutter/cupertino.dart';
+import 'package:adotabr/wid/appBar.dart';
 import 'package:flutter/material.dart';
-import '/wid/navBar.dart';
 import '/wid/iniciowid/posicao.dart';
 
 class inicioPg extends StatefulWidget{
-  const inicioPg({Key? key, required String nomeUsuario}) : super(key : key);
-
+  final String nomeUsuario;
+  const inicioPg({super.key, required this.nomeUsuario});
   @override 
+  // ignore: library_private_types_in_public_api
   _inicioPgState createState() => _inicioPgState();
 }
 
 class _inicioPgState extends State<inicioPg>{
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: app_bar(nomeUsuario: widget.nomeUsuario),
       body: ListView(
         children: [
-          // posição wid
-          Padding(padding: EdgeInsets.all(10),
-          child: Text("Posição"),
-          ),
+
+  // ! posição wid
           verPosicao(),
         ],
       ),
-      
-      // navbar 
-        bottomNavigationBar: Container(
-          height: 150,
-          child: navBar(),
-        ),
     );
   }
 }
