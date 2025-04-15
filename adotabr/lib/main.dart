@@ -1,4 +1,4 @@
-import 'package:adotabr/pages/settingsPage.dart';
+
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SettingsPage(),
+      home: Login(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade100,
         appBarTheme: AppBarTheme(
