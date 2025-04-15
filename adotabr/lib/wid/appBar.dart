@@ -22,7 +22,7 @@ class app_bar extends StatelessWidget implements PreferredSizeWidget  {
           ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -1,3 +1,4 @@
+import 'package:adotabr/pages/settingsPage.dart';
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 
@@ -12,12 +13,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: SettingsPage(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey.shade100,
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.grey.shade100,
-          foregroundColor: Colors.indigo.shade900
+          foregroundColor: Colors.grey.shade100,
+          backgroundColor: Colors.indigo.shade900,
+           titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500, 
+          color: Colors.amber.shade50
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20)
+            )
+          )
         )
       ),
     );

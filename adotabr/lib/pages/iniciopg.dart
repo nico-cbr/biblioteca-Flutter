@@ -1,5 +1,4 @@
 // ignore_for_file: camel_case_types
-import 'package:flutter/cupertino.dart';
 import 'package:adotabr/wid/appBar.dart';
 import 'package:flutter/material.dart';
 import '/wid/iniciowid/posicao.dart';
