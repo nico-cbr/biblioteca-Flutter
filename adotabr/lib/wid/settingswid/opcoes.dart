@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, camel_case_types
 
 import 'package:adotabr/pages/login.dart';
 import 'package:flutter/material.dart';

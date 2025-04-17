@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types
 import 'package:adotabr/wid/appBar.dart';
+import 'package:adotabr/wid/iniciowid/postagens.dart';
 import 'package:adotabr/wid/iniciowid/progresso.dart';
 import 'package:flutter/material.dart';
 import '/wid/iniciowid/posicao.dart';
@@ -18,12 +19,12 @@ class _inicioPgState extends State<inicioPg>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: app_bar(nomeUsuario: widget.nomeUsuario),
-      body: ListView(
+      body: Column(
         children: [
-
   // ! posição wid
           verPosicao(),
-          verProgresso()
+          verProgresso(),
+          Expanded(child: verPostagens())
         ],
       ),
     );

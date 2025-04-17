@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 class dmDetalhes extends StatelessWidget {
   final List<Map<String, String>> messages = [
-    {"from": "them", "text": "Olá! As crianças estão bem hoje 😊", "time": "16:02"},
-    {"from": "me", "text": "Que ótimo saber! Precisam de algo por aí?", "time": "16:03"},
-    {"from": "them", "text": "Estamos com pouca fralda e leite 😢", "time": "16:05"},
-    {"from": "me", "text": "Beleza, vou providenciar!", "time": "16:06"},
+    {"from": "me", "text": "Bom dia, eu vi sobre a *** ***** e gostaria de saber como posso proceder.", "time": "16:01"},
+    {"from": "them", "text": "Olá! nós podemos fazer uma visita presencial ou uma ligação antes. 😊", "time": "16:02"},
+    {"from": "me", "text": "Olha se ela nao se incomodar gostaria de conhece-la pessoalmente", "time": "16:03"},
+    {"from": "them", "text": "haha ela é bem extrovertida e vai adora", "time": "16:05"},
+    {"from": "me", "text": "vou providenciar e te trago um retorno", "time": "16:06"},
   ];
 
   @override
@@ -55,11 +56,11 @@ class dmDetalhes extends StatelessWidget {
                   child: Container(
                     padding:
                         EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: isMe ? EdgeInsets.only(left: 100, top: 15) : EdgeInsets.only(right: 100, top: 15),
                     decoration: BoxDecoration(
                       color: isMe
                           ? Colors.indigo.shade900
-                          : Colors.indigo.shade900.withAlpha(01),
+                          : Colors.indigo.shade900.withAlpha(20),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(

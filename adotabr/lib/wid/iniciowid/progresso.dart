@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class verProgresso extends StatelessWidget {
@@ -44,8 +46,8 @@ class verProgresso extends StatelessWidget {
                 Text("100%", style: TextStyle(fontSize: 18),),
                 SizedBox(width: 20,),
               ],
-             )
-
+             ),
+            SizedBox(height: 10,)
             ],
            ),
            ),

@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:adotabr/wid/dmwid/dmDetalhes.dart';
@@ -8,23 +8,23 @@ class conversarDm extends StatelessWidget {
     final List<Map<String, dynamic>> chats = [
     {
       "name": "Lar da Luz",
-      "message": "Estamos com pouca fralda e leite 😢",
+      "message": "Vamos verificar, ok?",
       "time": "16:05",
       "unread": 2,
       "image": "assets/lar_luz.png"
     },
     {
       "name": "Casa Esperança",
-      "message": "Obrigada pela visita de ontem!",
+      "message": "Claro, tenha um bom dia",
       "time": "15:20",
       "unread": 0,
       "image": "assets/casa_esperanca.png"
     },
     {
       "name": "Abrigo Nova Vida",
-      "message": "As crianças amaram os brinquedos 🎁",
+      "message": "Nós que agradecemos!",
       "time": "14:10",
-      "unread": 5,
+      "unread": 1,
       "image": "assets/nova_vida.png"
     },
   ];
