@@ -11,21 +11,21 @@ class conversarDm extends StatelessWidget {
       "message": "vou providenciar e te trago um...",
       "time": "16:05",
       "unread": 2,
-      "image": "assets/lar_luz.png"
+      "image": "assets/lar1.png"
     },
     {
       "name": "Casa Esperança",
       "message": "Claro, tenha um bom dia",
       "time": "15:20",
       "unread": 0,
-      "image": "assets/casa_esperanca.png"
+      "image": "assets/lar2.png"
     },
     {
       "name": "Abrigo Nova Vida",
       "message": "Nós que agradecemos!",
       "time": "14:10",
       "unread": 1,
-      "image": "assets/nova_vida.png"
+      "image": "assets/lar3.png"
     },
   ];
   @override

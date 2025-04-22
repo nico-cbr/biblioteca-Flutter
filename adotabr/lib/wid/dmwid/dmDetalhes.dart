@@ -27,7 +27,7 @@ class dmDetalhes extends StatelessWidget {
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('assets/lar_luz.png'), // imagem fictícia
+              backgroundImage: AssetImage('assets/lar1.png'), // imagem fictícia
             ),
             SizedBox(width: 10),
             Text(

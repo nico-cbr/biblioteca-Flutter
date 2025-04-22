@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:adotabr/pages/userPage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -26,8 +27,8 @@ class app_bar extends StatelessWidget implements PreferredSizeWidget  {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-           GestureDetector(
-            // onTap: () => Navigator.push(context, MaterialPageRoute(builder: ()=> const usuario.dart())),
+             GestureDetector(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage())),
           child: const CircleAvatar(
             backgroundImage: AssetImage('assets/cara.png'),
             radius: 25,
