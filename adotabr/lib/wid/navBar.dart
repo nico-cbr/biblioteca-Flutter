@@ -22,7 +22,7 @@ class _navBarState extends State<navBar> {
   final List<Widget> pages = [
     const inicioPg(nomeUsuario: 'Usuário',),
     dmPage(),
-    const Adocpage(),
+    const adocPage(),
     const SettingsPage(),
   ];
 

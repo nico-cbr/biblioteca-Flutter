@@ -8,7 +8,7 @@ class dmDetalhes extends StatelessWidget {
     {"from": "them", "text": "Olá! nós podemos fazer uma visita presencial ou uma ligação antes. 😊", "time": "16:02"},
     {"from": "me", "text": "Olha se ela nao se incomodar gostaria de conhece-la pessoalmente", "time": "16:03"},
     {"from": "them", "text": "haha ela é bem extrovertida e vai adora", "time": "16:05"},
-    {"from": "me", "text": "vou providenciar e te trago um retorno", "time": "16:06"},
+    {"from": "them", "text": "vou providenciar e te trago um retorno", "time": "16:06"},
   ];
 
   @override

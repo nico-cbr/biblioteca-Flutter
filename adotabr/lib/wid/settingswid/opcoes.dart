@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, camel_case_types
-
 import 'package:adotabr/pages/login.dart';
+import 'package:adotabr/pages/userPage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class opc extends StatefulWidget {
@@ -59,9 +60,16 @@ class _opcState extends State<opc> {
             onTap: () {},
           ),
           _buildSettingsTile(
-            icon: Icons.lock_outline,
-            title: "Alterar senha",
-            onTap: () {},
+            icon: CupertinoIcons.person_fill,
+            title: "Usuário",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserPage(), // Passa os dados do chat
+                ),
+              );
+            },
           ),
           _buildSettingsTile(
             icon: Icons.exit_to_app,

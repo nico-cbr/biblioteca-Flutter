@@ -8,7 +8,7 @@ class conversarDm extends StatelessWidget {
     final List<Map<String, dynamic>> chats = [
     {
       "name": "Lar da Luz",
-      "message": "Vamos verificar, ok?",
+      "message": "vou providenciar e te trago um...",
       "time": "16:05",
       "unread": 2,
       "image": "assets/lar_luz.png"
