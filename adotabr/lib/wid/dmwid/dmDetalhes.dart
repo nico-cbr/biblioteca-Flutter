@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_key_in_widget_constructors, library_private_types_in_public_api, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,18 +29,17 @@ class _dmDetalhesState extends State<dmDetalhes> {
     final response = await http.get(Uri.parse(firebaseUrl));
 
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body) as List<dynamic>; // Mudança aqui: use List<dynamic>
+ final data = jsonDecode(response.body) as Map<String, dynamic>;
 
-      final List<Map<String, String>> loadedMessages = [];
+final List<Map<String, String>> loadedMessages = [];
 
-      // Iterar sobre a lista de mensagens
-      for (var mensagem in data) {
-        loadedMessages.add({
-          "from": mensagem["from"] ?? "unknown",
-          "text": mensagem["text"] ?? "No text",
-          "time": mensagem["time"] ?? "Unknown time",
-        });
-      }
+data.forEach((key, value) {
+  loadedMessages.add({
+    "from": value["from"] ?? "unknown",
+    "text": value["text"] ?? "No text",
+    "time": value["time"] ?? "Unknown time",
+  });
+});
 
       setState(() {
         messages = loadedMessages;

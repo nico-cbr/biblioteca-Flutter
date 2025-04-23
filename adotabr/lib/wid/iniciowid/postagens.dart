@@ -28,7 +28,7 @@ class verPostagens extends StatelessWidget{
         future: buscarPostagem(),
         builder: (context, snapshot){
           if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(child: CircularProgressIndicator(),);
+            return Center(child: CircularProgressIndicator(color: Colors.indigo.shade900,));
           }
           if(snapshot.hasError){
             return Center(child: Text("Erro ao caregaar as postagens!"),);

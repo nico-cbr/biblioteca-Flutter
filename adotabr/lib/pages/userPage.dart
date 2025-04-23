@@ -79,7 +79,7 @@ class _UserPageState extends State<UserPage> {
       'preferenciasCulturais': preferenciasCulturais,
     };
 
-    final response = await http.put(Uri.parse(firebaseUrl), body: jsonEncode(dados));
+    final response = await http.patch(Uri.parse(firebaseUrl), body: jsonEncode(dados));
 
     if (response.statusCode == 200) {
       ScaffoldMessenger.of(context).showSnackBar(

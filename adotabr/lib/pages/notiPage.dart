@@ -64,9 +64,9 @@ class GovNotificationsPage extends StatelessWidget {
                 final notification = notifications[index];
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: Colors.amber.shade50,
+                    backgroundColor: Colors.grey.shade200,
                     child: Icon(notification["icon"] as IconData,
-                        color: Colors.amber.shade50),
+                        color: Colors.indigo.shade900),
                   ),
                   title: Text(
                     notification["title"] as String,
