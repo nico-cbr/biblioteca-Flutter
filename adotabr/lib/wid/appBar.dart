@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:adotabr/pages/notiPage.dart';
 import 'package:adotabr/pages/userPage.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,9 @@ class app_bar extends StatelessWidget implements PreferredSizeWidget  {
            ),
            const SizedBox(width: 10,),
            Expanded(child: Text('Olá $nomeUsuario', style: TextStyle(color: Colors.amber.shade50, fontSize: 24),)),
-          IconButton(onPressed: null, icon: Icon(Icons.notifications_outlined, color: Colors.amber.shade50, size: 30,)),
+          IconButton(onPressed: () => {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => GovNotificationsPage()))
+          }, icon: Icon(Icons.notifications_outlined, color: Colors.amber.shade50, size: 30,)),
           ],
         ),
       ),
