@@ -36,6 +36,7 @@ class LoginEstado extends State<Login> {
       body: Padding(
         padding: EdgeInsets.all(50.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // FadeInImage(placeholder: AssetImage('assets/carregar.gif'), 
@@ -66,15 +67,15 @@ class LoginEstado extends State<Login> {
   child: Text('Login com Gov.br', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),),
   ),
             SizedBox(
-              height: 20,
+              height: 25,
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CadastrarPostagem(Postagens: [],)));
-              },
-              child: Text('Não tem uma conta? Cadastre-se', style: TextStyle(color: Colors.grey.shade900),),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     Navigator.push(context,
+            //         MaterialPageRoute(builder: (context) => CadastrarPostagem(Postagens: [],)));
+            //   },
+            //   child: Text('Não tem uma conta? Cadastre-se', style: TextStyle(color: Colors.grey.shade900),),
+            // ),
           ],
         ),
       ),

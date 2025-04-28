@@ -14,9 +14,10 @@ class dmPage extends StatelessWidget{
           "Conversas"),
         actions: [
           IconButton(
-            icon: Icon(Icons.add, color: Colors.indigo.shade900),
+            icon: Icon(Icons.add, color: Colors.amber.shade50),
             onPressed: () {},
-          )
+          ),
+          SizedBox(width: 20,)
         ],
       ),
       body: ListView(

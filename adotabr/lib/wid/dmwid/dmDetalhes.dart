@@ -11,10 +11,10 @@ class dmDetalhes extends StatefulWidget {
 
 class _dmDetalhesState extends State<dmDetalhes> {
   final TextEditingController _controller = TextEditingController();
-  List<Map<String, String>> messages = [];
-  bool isLoading = true; // Flag de carregamento
+  List<Map<String, dynamic>> messages = []; // ✅ dynamic para aceitar bool
+  bool isLoading = true;
+  bool isMe = true; // ✅ controle do switch
 
-  // 🔗 URL do banco Firebase
   final String firebaseUrl = 'https://adota0-001-default-rtdb.firebaseio.com/Anonimato/Mensagens1.json';
 
   @override
@@ -23,54 +23,48 @@ class _dmDetalhesState extends State<dmDetalhes> {
     fetchMessages();
   }
 
-  // Função para buscar mensagens do Firebase
   Future<void> fetchMessages() async {
-  try {
-    final response = await http.get(Uri.parse(firebaseUrl));
+    try {
+      final response = await http.get(Uri.parse(firebaseUrl));
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        final List<Map<String, dynamic>> loadedMessages = [];
 
-    if (response.statusCode == 200) {
- final data = jsonDecode(response.body) as Map<String, dynamic>;
+        data.forEach((key, value) {
+          loadedMessages.add({
+            "from": value["from"] ?? "unknown",
+            "text": value["text"] ?? "No text",
+            "time": value["time"] ?? "Unknown time",
+            "read": value["read"] ?? false, // ✅ carrega read também
+          });
+        });
 
-final List<Map<String, String>> loadedMessages = [];
-
-data.forEach((key, value) {
-  loadedMessages.add({
-    "from": value["from"] ?? "unknown",
-    "text": value["text"] ?? "No text",
-    "time": value["time"] ?? "Unknown time",
-  });
-});
-
-      setState(() {
-        messages = loadedMessages;
-        isLoading = false; // Finaliza o carregamento
-      });
-    } else {
-      print('Erro ao buscar mensagens: ${response.statusCode}');
-      setState(() {
-        isLoading = false; // Finaliza o carregamento mesmo em caso de erro
-      });
+        setState(() {
+          messages = loadedMessages;
+          isLoading = false;
+        });
+      } else {
+        print('Erro ao buscar mensagens: ${response.statusCode}');
+        setState(() => isLoading = false);
+      }
+    } catch (e) {
+      print('Erro na requisição: $e');
+      setState(() => isLoading = false);
     }
-  } catch (e) {
-    print('Erro na requisição: $e');
-    setState(() {
-      isLoading = false; // Finaliza o carregamento em caso de erro
-    });
   }
-}
 
   void _sendMessage() async {
     final text = _controller.text.trim();
     if (text.isEmpty) return;
 
     final now = TimeOfDay.now();
-    final formattedTime =
-        "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}";
+    final formattedTime = "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}";
 
-    final newMessage = {
-      "from": "me",
+    final Map<String, dynamic> newMessage = {
+      "from": isMe ? "me" : "them",
       "text": text,
       "time": formattedTime,
+      if (!isMe) "read": true, // ✅ apenas se for "them"
     };
 
     setState(() {
@@ -79,11 +73,11 @@ data.forEach((key, value) {
 
     _controller.clear();
 
-    // Envio para o Firebase
     try {
       final response = await http.post(
         Uri.parse(firebaseUrl),
         body: jsonEncode(newMessage),
+        headers: {'Content-Type': 'application/json'}, // ✅ importante
       );
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -112,13 +106,24 @@ data.forEach((key, value) {
               backgroundImage: AssetImage('assets/lar1.png'),
             ),
             SizedBox(width: 10),
-            Text(
-              "Lar da Luz",
-              style: TextStyle(
-                color: Colors.amber.shade50,
-                fontWeight: FontWeight.bold,
+            Expanded(
+              child: Text(
+                "Lar da Luz",
+                style: TextStyle(
+                  color: Colors.amber.shade50,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            )
+            ),
+            Switch(
+              value: isMe,
+              onChanged: (value) {
+                setState(() {
+                  isMe = value;
+                });
+              },
+              activeColor: Colors.indigo.shade900,
+            ),
           ],
         ),
       ),
@@ -133,19 +138,19 @@ data.forEach((key, value) {
                       itemCount: messages.length,
                       itemBuilder: (context, index) {
                         final msg = messages[index];
-                        final isMe = msg['from'] == 'me';
-        
+                        final isMeMessage = msg['from'] == 'me';
+
                         return Align(
-                          alignment: isMe
+                          alignment: isMeMessage
                               ? Alignment.centerRight
                               : Alignment.centerLeft,
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                            margin: isMe
+                            margin: isMeMessage
                                 ? EdgeInsets.only(left: 100, top: 15)
                                 : EdgeInsets.only(right: 100, top: 15),
                             decoration: BoxDecoration(
-                              color: isMe
+                              color: isMeMessage
                                   ? Colors.indigo.shade900
                                   : Colors.indigo.shade900.withAlpha(20),
                               borderRadius: BorderRadius.circular(12),
@@ -154,17 +159,17 @@ data.forEach((key, value) {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  msg['text']!,
+                                  msg['text'] ?? '',
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: isMe
+                                    color: isMeMessage
                                         ? Colors.amber.shade50
                                         : Colors.black,
                                   ),
                                 ),
                                 SizedBox(height: 4),
                                 Text(
-                                  msg['time']!,
+                                  msg['time'] ?? '',
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 12,
@@ -208,7 +213,7 @@ data.forEach((key, value) {
                       backgroundColor: Colors.indigo.shade900,
                       child: Icon(Icons.send, color: Colors.white),
                     ),
-                  )
+                  ),
                 ],
               ),
             )
