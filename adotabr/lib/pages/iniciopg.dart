@@ -5,26 +5,50 @@ import 'package:adotabr/wid/iniciowid/progresso.dart';
 import 'package:flutter/material.dart';
 import '/wid/iniciowid/posicao.dart';
 
-class inicioPg extends StatefulWidget{
+class inicioPg extends StatefulWidget {
   final String nomeUsuario;
   const inicioPg({super.key, required this.nomeUsuario});
-  @override 
-  // ignore: library_private_types_in_public_api
+
+  @override
   _inicioPgState createState() => _inicioPgState();
 }
 
-class _inicioPgState extends State<inicioPg>{
-
+class _inicioPgState extends State<inicioPg> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: app_bar(nomeUsuario: widget.nomeUsuario),
-      body: Column(
-        children: [
-  // ! posição wid
-          verPosicao(),
-          verProgresso(),
-          Expanded(child: verPostagens())
+      
+      // CORPO COM SLIVERS
+      body: CustomScrollView(
+        slivers: [
+          // seu card de posição
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: verPosicao(),
+            ),
+          ),
+          
+          // seu card de progresso
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: verProgresso(),
+            ),
+          ),
+          
+          // botão de espaçamento extra, se quiser
+          SliverToBoxAdapter(child: SizedBox(height: 16)),
+          
+          // lista de postagens preenchendo o resto
+          SliverFillRemaining(
+            hasScrollBody: true,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: verPostagens(),
+            ),
+          ),
         ],
       ),
     );

@@ -65,32 +65,39 @@ class _UserPageState extends State<UserPage> {
   }
 
   Future<void> salvarPreferencias() async {
-    final dados = {
-      'nomeSocial': nomeController.text,
-      'apelido': apelidoController.text,
-      'dataNasc': dataNascController.text,
-      'telefone': telefoneController.text,
-      'email': emailController.text,
-      'logradouro': logradouroController.text,
-      'numero': numeroController.text,
-      'faixaEtaria': faixaEtaria,
-      'numeroCriancas': numeroCriancas,
-      'necessidadesEspeciais': necessidadesEspeciais,
-      'preferenciasCulturais': preferenciasCulturais,
-    };
+  final dados = {
+    'nomeSocial': nomeController.text,
+    'apelido': apelidoController.text,
+    'dataNasc': dataNascController.text,
+    'telefone': telefoneController.text,
+    'email': emailController.text,
+    'logradouro': logradouroController.text,
+    'numero': numeroController.text,
+    'faixaEtaria': faixaEtaria,
+    'numeroCriancas': numeroCriancas,
+    'necessidadesEspeciais': necessidadesEspeciais,
+    'preferenciasCulturais': preferenciasCulturais,
+  };
 
-    final response = await http.patch(Uri.parse(firebaseUrl), body: jsonEncode(dados));
+  final response = await http.patch(Uri.parse(firebaseUrl), body: jsonEncode(dados));
 
-    if (response.statusCode == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Preferências salvas com sucesso!')),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Erro ao salvar as preferências')),
-      );
-    }
+  if (response.statusCode == 200) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Preferências salvas com sucesso!')),
+    );
+
+    await Future.delayed(const Duration(milliseconds: 500)); // Dá tempo do SnackBar aparecer
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => navBar()),
+      (route) => false,
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Erro ao salvar as preferências')),
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {

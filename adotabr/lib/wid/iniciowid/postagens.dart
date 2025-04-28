@@ -38,35 +38,92 @@ class verPostagens extends StatelessWidget{
           }
           final posts = snapshot.data!;
           return ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (context, index){
-              final post = posts[index];
-              return Card(
-                color: Colors.white,
-                elevation: 5,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),
-                shadowColor: Colors.black87,
-                margin: EdgeInsets.symmetric(vertical: 40, horizontal: 35),
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,),
-                  post['imagem'] == null || post['imagem'].isEmpty ? SizedBox() : Image.network(post['imagem'], height: 200,),
-                    Padding(padding: EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(post['titulo']),
-                        SizedBox(height: 8,),
-                        Text(post['conteudo']),
-                        Text("Autor: ${post['autor']}")
-                      ],
+  itemCount: posts.length,
+  itemBuilder: (context, index) {
+    final post = posts[index];
+    return Card(
+      color: Colors.white, // Fundo cinza claro
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Imagem no topo
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            child: post['imagem'] == null || post['imagem'].isEmpty
+                ? SizedBox(height: 200, child: Center(child: Icon(Icons.image, size: 50)))
+                : Image.network(
+                    post['imagem'],
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+          ),
+          SizedBox(height: 12),
+          // Título e data
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Título
+                Expanded(
+                  child: Text(
+                    post['titulo'] ?? '',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22, // Título maior
+                      color: Colors.black, // Cor preta
                     ),
-                    )
-                  ],
+                  ),
                 ),
-              );
-            },
-          );
+                SizedBox(width: 8),
+                // Bolinha amarela com data
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.amber.shade50,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    post['data'] ?? '28/04', // Aqui mostra a data
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 12),
+          // Conteúdo
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              post['conteudo'] ?? '',
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+          SizedBox(height: 12),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              "Autor: ${post['autor'] ?? ''}",
+              style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+            ),
+          ),
+          SizedBox(height: 20),
+        ],
+      ),
+    );
+  },
+);
+
         },
       )
     );}}
