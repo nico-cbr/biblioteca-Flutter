@@ -143,7 +143,7 @@ class CadastrarPostagemEstado extends State<CadastrarPostagem>{
         SizedBox(
               height: 20,
             ),
-                TextField(controller: autorControle, decoration: InputDecoration(labelText:"titulo da postagem", 
+                TextField(controller: autorControle, decoration: InputDecoration(labelText:"autor da postagem", 
         border: OutlineInputBorder(),
         prefixIcon: Icon(Icons.title_rounded),
         prefixIconColor: Colors.grey,

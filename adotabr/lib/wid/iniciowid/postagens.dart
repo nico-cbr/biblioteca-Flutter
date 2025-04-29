@@ -13,10 +13,11 @@ class verPostagens extends StatelessWidget{
   final List<Map<String, dynamic>> posts = [];
   dados.forEach((key, valor) {
     posts.add({
-      'titulo': valor['titulo'], // Adjusted to match the correct key casing
-      'conteudo': valor['conteudo'], // Adjusted to match the correct key casing
-      'autor': valor['autor'], // Assuming 'autor' casing is correct
-      'imagem': valor['imagem'], // Adjusted to match the correct key casing
+  'titulo': valor['titulo'],
+  'conteudo': valor['conteudo'],
+  'autor': valor['autor'],
+  'imagem': valor['imagem'],
+  'data': valor['data'], // <- Faltava adicionar o campo 'data' aqui!
     });
   });
   return posts;
